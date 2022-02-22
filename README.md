@@ -2,14 +2,13 @@
 
 # Project Name
 
-> Description the project.
+> A simple to-do list with amazing features and a great ux. built using ES6 and npm webpack. Check it out to explore its amazing features.
 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- Javascript, HTML, CSS
+- npm webpack, linters
 
 ## Live Demo (if available)
 
@@ -18,45 +17,43 @@
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-### Setup
+You will need:
 
-### Install
+A laptop or tablet, preferably a laptop;
+A browser installed like Chrome, Firefox, etc;
+A text editor like installed Atom, VS-code, etc;
+Terminal or commandline;
+Internet connection.
 
-### Usage
+### Setup, Install, and Usage
 
-### Run tests
+Proceed to follow these steps:
 
-### Deployment
+Follow these steps:
 
-
+- Create a folder in the local storage of your computer which will contain the repository;
+- open your browser and go to [the project's repository on github](https://github.com/carlylechia/My-To-do-List);
+- Click on the `code button` and copy the https link that is provided on the dropdown;
+- open terminal or commandline from the folder you created in the first step, and type in the command, "git clone " and then paste the url you copied on the previous step, (https://github.com/carlylechia/My-To-do-List.git).
+- finally, you have the repository on your local computer storage. You can now open your text editor and import the repository to start making changes.
 
 ## Authors
 
-👤 **Author1**
+👤 **Chia Carlyle**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@carlylechia](https://github.com/carlylechia)
+- Twitter: [@CarlyleChia](https://twitter.com/CarlyleChia)
+- LinkedIn: [Chia Carlyle](https://linkedin.com/in/chia-carlyle)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/carlylechia/My-To-do-List/issues).
 
 ## Show your support
 
@@ -64,9 +61,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Hat tip to the Microverse team for the guidance and reviews.
 
 ## 📝 License
 
