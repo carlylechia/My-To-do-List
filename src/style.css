@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: scroll;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todolist {
+  margin: 20px 40px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: -1px -1px 15px 2px rgba(192, 181, 181, 1);
+  border: 1px solid black;
+}
+
+.todo-header {
+  padding: 25px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+}
+
+.todo-header a {
+  margin: auto 1%;
+}
+
+.todo-form {
+  margin: 10px;
+}
+
+#form {
+  padding: 10px;
+  border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-task {
+  outline: none;
+  border: none;
+  margin: auto 1%;
+  font-size: 25px;
+  font-style: italic;
+  width: 100%;
+}
+
+.submit {
+  outline: none;
+  border: none;
+  margin: auto 0.25%;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.to-dos li {
+  list-style-type: none;
+  height: 70px;
+  padding: 10px 0 10px 20px;
+  position: relative;
+  border-bottom: 1px solid #000;
+  text-decoration: none;
+}
+
+.to-dos li input {
+  margin: auto 0 auto 1%;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.to-dos li .todotask {
+  outline: none;
+  border: none;
+  width: 80%;
+}
+
+.to-dos li .todotask:focus {
+  outline: none;
+  border-bottom: 1px solid #000;
+}
+
+.to-dos li i {
+  position: absolute;
+  right: 2%;
+  cursor: pointer;
+}
+
+#form label {
+  position: absolute;
+  left: 10%;
+}
+
+.fa-times {
+  position: absolute;
+  left: 90%;
+}
+
+.clear-all {
+  text-align: center;
+  font-size: medium;
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #000;
+  opacity: 0.6;
+  cursor: pointer;
+}
