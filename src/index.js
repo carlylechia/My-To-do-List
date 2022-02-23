@@ -1,12 +1,36 @@
-import _ from 'lodash';
 import './style.css';
 
-function component() {
-  const element = document.createElement('div');
-  element.innerHTML = _.join(['I', 'finally', 'got', 'it!'], ' ');
-  element.classList.add('title');
+const tasks = [
+  {
+    description: 'Wake up',
+    completed: true,
+    index: 0,
+  },
+  {
+    description: 'Pray',
+    completed: true,
+    index: 1,
+  },
+  {
+    description: 'Eat breakfast',
+    completed: false,
+    index: 2,
+  },
+];
 
-  return element;
-}
+const taskWrapper = document.querySelector('.to-dos');
 
-document.body.appendChild(component());
+const showList = () => {
+  taskWrapper.innerHTML = '';
+  for (let i = 0; i < tasks.length; i += 1) {
+    taskWrapper.innerHTML += `
+    <form id="form">
+      <input type="checkbox" id="${tasks[i].index}" name="task" value="task">
+      <label for="${tasks[i].index}">${tasks[i].description}</label>
+      <i class="fa fa fa-times"></i><br>
+    </form>
+    `;
+  }
+};
+
+window.addEventListener('load', showList);
