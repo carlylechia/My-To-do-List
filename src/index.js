@@ -24,11 +24,6 @@ const resetIndex = (tasks) => {
   }
 };
 
-const rmvTask = (index) => {
-  const mylocal = getFromLocalStorage();
-  mylocal.splice(index - 1, 1);
-};
-
 const editTask = (desc, index) => {
   tasks[index - 1].description = desc;
   addToLocalStorage();
@@ -59,6 +54,16 @@ const displayTasks = () => {
       setState(tasks, e.target, tsk.index);
       addToLocalStorage();
     });
+
+    const rmvTask = (index) => {
+      const mylocal = getFromLocalStorage();
+      mylocal.splice(index, 1);
+      for (let i = index; i < mylocal.length; i += 1) {
+        mylocal[i].index -= 1;
+      }
+      addToLocalStorage();
+      displayTasks();
+    };
 
     const taskDesc = document.createElement('input');
     taskDesc.classList.add('todotask');
@@ -98,7 +103,7 @@ const addToTasks = () => {
   tasks.push({
     checked: false,
     description: newTask.value,
-    index: lengt + 1,
+    index: lengt,
   });
   newTask.value = '';
   addToLocalStorage();
