@@ -27,6 +27,7 @@ body {
   background-color: #fff;
   box-shadow: -1px -1px 15px 2px rgba(192, 181, 181, 1);
   border: 1px solid black;
+  border-radius: 10px;
 }
 
 .todo-header {
@@ -34,6 +35,9 @@ body {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #000;
+  background-color: pink;
+  font-size: 30px;
+  border-radius: 10px;
 }
 
 .todo-header a {
@@ -75,6 +79,8 @@ body {
   position: relative;
   border-bottom: 1px solid #000;
   text-decoration: none;
+  width: 98%;
+  margin: 0 auto;
 }
 
 .to-dos li input {
@@ -100,16 +106,6 @@ body {
   cursor: pointer;
 }
 
-#form label {
-  position: absolute;
-  left: 10%;
-}
-
-.fa-times {
-  position: absolute;
-  left: 90%;
-}
-
 .clear-all {
   text-align: center;
   font-size: medium;
@@ -118,4 +114,5 @@ body {
   border-bottom: 1px solid #000;
   opacity: 0.6;
   cursor: pointer;
+  border-radius: 10px;
 }
