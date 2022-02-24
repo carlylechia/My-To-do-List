@@ -1,4 +1,5 @@
 import './style.css';
+import setState from './modules/getStates.js';
 
 let tasks = [];
 const taskWrapper = document.querySelector('.to-dos');
@@ -19,29 +20,20 @@ const getFromLocalStorage = () => {
 
 const resetIndex = (tasks) => {
   for (let i = 0; i < tasks.length; i += 1) {
-    const indx = i + 1;
+    let indx = i + 1;
+    indx = i;
     tasks[i].index = indx;
   }
 };
 
 const editTask = (desc, index) => {
-  tasks[index - 1].description = desc;
+  tasks[index].description = desc;
   addToLocalStorage();
-};
-
-const setState = (tasks, checkbox, index) => {
-  const decrease = index - 1;
-  if (checkbox.checked) {
-    tasks[decrease].checked = true;
-  } else {
-    tasks[decrease].checked = false;
-  }
 };
 
 const displayTasks = () => {
   taskWrapper.innerHTML = '';
   const mylocal = getFromLocalStorage();
-
   mylocal.forEach((tsk) => {
     const li = document.createElement('li');
     const checkbox = document.createElement('input');
@@ -51,6 +43,8 @@ const displayTasks = () => {
     }
     checkbox.addEventListener('change', (e) => {
       e.preventDefault();
+      // eslint-disable-next-line no-use-before-define
+      strikeThrough();
       setState(tasks, e.target, tsk.index);
       addToLocalStorage();
     });
@@ -68,6 +62,8 @@ const displayTasks = () => {
     const taskDesc = document.createElement('input');
     taskDesc.classList.add('todotask');
     taskDesc.value = tsk.description;
+
+    const strikeThrough = () => taskDesc.classList.toggle('strike');
 
     const deleteTask = document.createElement('i');
     taskDesc.addEventListener('change', (e) => {
@@ -87,28 +83,38 @@ const displayTasks = () => {
     taskWrapper.appendChild(li);
   });
 };
-const ClearcompletedTasks = () => {
-  tasks = tasks.filter((item) => item.checked === false);
+const clearCompletedTasks = () => {
+  tasks = tasks.filter((item) => !item.checked);
   resetIndex(tasks);
   addToLocalStorage();
   displayTasks();
 };
 
-clearAll.addEventListener('click', () => {
-  ClearcompletedTasks();
-});
+clearAll.addEventListener('click', clearCompletedTasks);
 
 const addToTasks = () => {
-  const lengt = tasks.length;
+  const position = tasks.length;
   tasks.push({
     checked: false,
     description: newTask.value,
-    index: lengt,
+    index: position,
   });
   newTask.value = '';
   addToLocalStorage();
   displayTasks();
 };
+
+const reset = document.getElementById('reset');
+
+const clearAllTasks = () => {
+  tasks = [];
+};
+
+reset.addEventListener('click', () => {
+  clearAllTasks();
+  addToLocalStorage();
+  displayTasks();
+});
 
 addNewTask.addEventListener('click', (e) => {
   e.preventDefault();
