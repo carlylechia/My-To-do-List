@@ -116,3 +116,7 @@ body {
   cursor: pointer;
   border-radius: 10px;
 }
+
+.strike {
+  text-decoration: line-through;
+}

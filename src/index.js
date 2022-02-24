@@ -1,4 +1,5 @@
 import './style.css';
+import setState from './modules/getStates.js';
 
 let tasks = [];
 const taskWrapper = document.querySelector('.to-dos');
@@ -26,16 +27,8 @@ const resetIndex = (tasks) => {
 };
 
 const editTask = (desc, index) => {
-  tasks[index - 1].description = desc;
+  tasks[index].description = desc;
   addToLocalStorage();
-};
-
-const setState = (tasks, checkbox, index) => {
-  if (checkbox.checked === true) {
-    tasks[index].checked = true;
-  } else {
-    tasks[index].checked = false;
-  }
 };
 
 const displayTasks = () => {
@@ -50,6 +43,8 @@ const displayTasks = () => {
     }
     checkbox.addEventListener('change', (e) => {
       e.preventDefault();
+      // eslint-disable-next-line no-use-before-define
+      strikeThrough();
       setState(tasks, e.target, tsk.index);
       addToLocalStorage();
     });
@@ -67,6 +62,8 @@ const displayTasks = () => {
     const taskDesc = document.createElement('input');
     taskDesc.classList.add('todotask');
     taskDesc.value = tsk.description;
+
+    const strikeThrough = () => taskDesc.classList.toggle('strike');
 
     const deleteTask = document.createElement('i');
     taskDesc.addEventListener('change', (e) => {
@@ -96,16 +93,28 @@ const clearCompletedTasks = () => {
 clearAll.addEventListener('click', clearCompletedTasks);
 
 const addToTasks = () => {
-  const lengt = tasks.length;
+  const position = tasks.length;
   tasks.push({
     checked: false,
     description: newTask.value,
-    index: lengt,
+    index: position,
   });
   newTask.value = '';
   addToLocalStorage();
   displayTasks();
 };
+
+const reset = document.getElementById('reset');
+
+const clearAllTasks = () => {
+  tasks = [];
+};
+
+reset.addEventListener('click', () => {
+  clearAllTasks();
+  addToLocalStorage();
+  displayTasks();
+});
 
 addNewTask.addEventListener('click', (e) => {
   e.preventDefault();
