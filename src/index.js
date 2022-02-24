@@ -19,7 +19,8 @@ const getFromLocalStorage = () => {
 
 const resetIndex = (tasks) => {
   for (let i = 0; i < tasks.length; i += 1) {
-    const indx = i + 1;
+    let indx = i + 1;
+    indx = i;
     tasks[i].index = indx;
   }
 };
@@ -30,18 +31,16 @@ const editTask = (desc, index) => {
 };
 
 const setState = (tasks, checkbox, index) => {
-  const decrease = index - 1;
-  if (checkbox.checked) {
-    tasks[decrease].checked = true;
+  if (checkbox.checked === true) {
+    tasks[index].checked = true;
   } else {
-    tasks[decrease].checked = false;
+    tasks[index].checked = false;
   }
 };
 
 const displayTasks = () => {
   taskWrapper.innerHTML = '';
   const mylocal = getFromLocalStorage();
-
   mylocal.forEach((tsk) => {
     const li = document.createElement('li');
     const checkbox = document.createElement('input');
@@ -87,16 +86,14 @@ const displayTasks = () => {
     taskWrapper.appendChild(li);
   });
 };
-const ClearcompletedTasks = () => {
-  tasks = tasks.filter((item) => item.checked === false);
+const clearCompletedTasks = () => {
+  tasks = tasks.filter((item) => !item.checked);
   resetIndex(tasks);
   addToLocalStorage();
   displayTasks();
 };
 
-clearAll.addEventListener('click', () => {
-  ClearcompletedTasks();
-});
+clearAll.addEventListener('click', clearCompletedTasks);
 
 const addToTasks = () => {
   const lengt = tasks.length;
