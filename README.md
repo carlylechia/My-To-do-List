@@ -2,7 +2,10 @@
 
 # Project Name
 
-> A simple to-do list with amazing features and a great ux. built using ES6 and npm webpack. Check it out to explore its amazing features.
+> A simple to-do list with amazing features and a great ux. built using ES6 and npm webpack. Check it out to explore its amazing features. The link is in the live demo section below.
+
+![desktop-version](desktop.png)
+![mobile-version](mobile.png)
 
 
 ## Built With
@@ -12,7 +15,7 @@
 
 ## Live Demo (if available)
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://carlylechia.github.io/My-To-do-List/)
 
 
 ## Getting Started
