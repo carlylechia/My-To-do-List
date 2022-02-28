@@ -77,10 +77,13 @@ body {
   height: 70px;
   padding: 10px 0 10px 20px;
   position: relative;
-  border-bottom: 1px solid #000;
   text-decoration: none;
   width: 98%;
   margin: 0 auto;
+}
+
+.to-dos li:not(:last-of-type) {
+  border-bottom: 1px solid #000;
 }
 
 .to-dos li input {
@@ -119,4 +122,13 @@ body {
 
 .strike {
   text-decoration: line-through;
+}
+
+.fa-grip-lines {
+  position: absolute;
+  left: 85%;
+}
+
+.over {
+  background-color: beige;
 }

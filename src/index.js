@@ -33,14 +33,19 @@ const editTask = (desc, index) => {
 
 const displayTasks = () => {
   taskWrapper.innerHTML = '';
+  taskWrapper.classList.add('drag-list');
   const mylocal = getFromLocalStorage();
-  mylocal.forEach((tsk) => {
+  mylocal.forEach((tsk, index) => {
     const li = document.createElement('li');
+    li.setAttribute('draggable', 'true');
+    li.setAttribute('data-index', index);
+    li.classList.add('draggable');
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
     if (tsk.checked === true) {
       checkbox.setAttribute('checked', 'checked');
     }
+
     checkbox.addEventListener('change', (e) => {
       e.preventDefault();
       // eslint-disable-next-line no-use-before-define
@@ -65,13 +70,17 @@ const displayTasks = () => {
 
     const strikeThrough = () => taskDesc.classList.toggle('strike');
 
+    const hold = document.createElement('i');
+    hold.classList.add('fas', 'fa-grip-lines');
+    hold.setAttribute('draggable', 'true');
+
     const deleteTask = document.createElement('i');
     taskDesc.addEventListener('change', (e) => {
       e.preventDefault();
       editTask(e.target.value, tsk.index);
       taskDesc.blur();
     });
-    deleteTask.classList.add('fas', 'fa-ellipsis-v');
+    deleteTask.classList.add('fas', 'fa-solid', 'fa-trash');
     deleteTask.addEventListener('click', () => {
       rmvTask(tsk.index);
       resetIndex(mylocal);
@@ -79,8 +88,55 @@ const displayTasks = () => {
       displayTasks();
     });
 
-    li.append(checkbox, taskDesc, deleteTask);
+    li.append(checkbox, taskDesc, hold, deleteTask);
     taskWrapper.appendChild(li);
+  });
+  // eslint-disable-next-line no-use-before-define
+  dragDrop();
+};
+
+function swapTasks(fromIndex, toIndex) {
+  const taskOne = tasks[fromIndex].querySelector('.draggable');
+  const taskTwo = tasks[toIndex].querySelector('.draggable');
+
+  tasks[fromIndex].appendChild(taskTwo);
+  tasks[toIndex].appendChild(taskOne);
+}
+
+let dragStartIndex;
+
+function dragStart() {
+  dragStartIndex = +this.closest('li').getAttribute('index');
+}
+function drop() {
+  const dragEndIndex = +this.getAttribute('index');
+  swapTasks(dragStartIndex, dragEndIndex);
+
+  this.classList.remove('over');
+}
+function dragOver(e) {
+  e.preventDefault();
+}
+function dragEnter() {
+  this.classList.add('over');
+}
+function dragLeave() {
+  this.classList.remove('over');
+}
+
+const dragDrop = () => {
+  const draggables = document.querySelectorAll('.draggable');
+  const dragged = document.querySelectorAll('.drag-list li');
+
+  draggables.forEach((draggable) => {
+    draggable.addEventListener('dragstart', dragStart);
+  });
+
+  dragged.forEach((item) => {
+    item.addEventListener('drop', drop);
+    item.addEventListener('dragover', dragOver);
+    item.addEventListener('dragenter', dragEnter);
+    item.addEventListener('dragleave', dragLeave);
   });
 };
 const clearCompletedTasks = () => {
