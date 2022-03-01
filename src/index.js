@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 import './style.css';
 import setState from './modules/getStates.js';
 
@@ -42,14 +44,21 @@ const displayTasks = () => {
     li.classList.add('draggable');
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
-    if (tsk.checked === true) {
-      checkbox.setAttribute('checked', 'checked');
-    }
+    // eslint-disable-next-line no-unused-expressions
+    tsk.checked ? checkbox.setAttribute('checked', true) : null;
+
+    const strike = () => {
+      if (!tsk.checked) {
+        taskDesc.classList.add('strike');
+      } else {
+        taskDesc.classList.remove('strike');
+      }
+      addToLocalStorage();
+    };
 
     checkbox.addEventListener('change', (e) => {
       e.preventDefault();
-      // eslint-disable-next-line no-use-before-define
-      strikeThrough();
+      strike();
       setState(tasks, e.target, tsk.index);
       addToLocalStorage();
     });
@@ -67,8 +76,6 @@ const displayTasks = () => {
     const taskDesc = document.createElement('input');
     taskDesc.classList.add('todotask');
     taskDesc.value = tsk.description;
-
-    const strikeThrough = () => taskDesc.classList.toggle('strike');
 
     const hold = document.createElement('i');
     hold.classList.add('fas', 'fa-grip-lines');
