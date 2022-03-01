@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# A To-do List Web Application
 
 > A simple to-do list with amazing features and a great ux. built using ES6 and npm webpack. Check it out to explore its amazing features. The link is in the live demo section below.
 
@@ -13,7 +13,7 @@
 - Javascript, HTML, CSS
 - npm webpack, linters
 
-## Live Demo (if available)
+## Live Demo
 
 [Live Demo Link](https://carlylechia.github.io/My-To-do-List/)
 
