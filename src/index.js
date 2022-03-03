@@ -50,10 +50,11 @@ const displayTasks = () => {
     const strike = () => {
       if (!tsk.checked) {
         taskDesc.classList.add('strike');
+        addToLocalStorage();
       } else {
         taskDesc.classList.remove('strike');
+        addToLocalStorage();
       }
-      addToLocalStorage();
     };
 
     checkbox.addEventListener('change', (e) => {
